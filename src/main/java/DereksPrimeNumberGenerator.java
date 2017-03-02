@@ -27,6 +27,21 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
 
     @Override
     public boolean isPrime(int value) {
-        return false;
+        if (value < 1) {
+            return false;
+        } else if (value <= 3) {
+            return true;
+        } else if (value % 2 == 0) {
+            return false;
+        }
+
+        int maxDivisor = (int)Math.sqrt(value);
+
+        for (int i = 3; i <= maxDivisor; i += 2) {
+            if ( (double)value/i == value/i ) {
+                return false;
+            }
+        }
+        return true;
     }
 }

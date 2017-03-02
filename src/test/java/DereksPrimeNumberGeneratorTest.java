@@ -13,7 +13,7 @@ public class DereksPrimeNumberGeneratorTest {
     private static int startingValue = 7900;
     private static int endingValue = 7920;
     private static int[] validPrimes = {7901, 7907, 7919};
-    private static int[] invalidPrimes = {4, 10, 15, 21};
+    private static int[] invalidPrimes = {4, 10, 9, 15, 21};
 
     private PrimeNumberGenerator underTest;
 
@@ -36,7 +36,7 @@ public class DereksPrimeNumberGeneratorTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenValueIsNoPrime() throws Exception {
+    public void shouldReturnFalseWhenValueIsNotPrime() throws Exception {
         for (int i : invalidPrimes) {
             assertThat(underTest.isPrime(i), equalTo(false));
         }
