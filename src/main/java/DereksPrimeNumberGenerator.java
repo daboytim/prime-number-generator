@@ -28,9 +28,6 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
                 startingValue++;
             }
         }
-        if (endingValue % 2 == 0) {
-            endingValue--;
-        }
 
         for (int i = startingValue; i <= endingValue; i += 2) {
             if (isPrime(i)) {
