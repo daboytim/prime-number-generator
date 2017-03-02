@@ -7,7 +7,7 @@ jar {
     manifest {
         attributes 'Implementation-Title': 'A simple prime number generator',
                 'Implementation-Version': version,
-                'Main-Class': 'DereksPrimeNumberGenerator'
+                'Main-Class': 'PrimeNumberGeneratorRunner'
     }
 }
 
@@ -21,5 +21,5 @@ dependencies {
     compile 'org.mockito:mockito-core:2.7.6'
 }
 
-mainClassName = 'DereksPrimeNumberGenerator'
+mainClassName = 'PrimeNumberGeneratorRunner'
 
