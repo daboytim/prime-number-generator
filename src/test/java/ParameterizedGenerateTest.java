@@ -33,11 +33,11 @@ public class ParameterizedGenerateTest {
         return Arrays.asList(new Object[][] {
                 {7900, 7920, new int[]{7901, 7907, 7919}},
                 {7920, 7900, new int[]{7901, 7907, 7919}},
-                {0, 10, new int[]{1, 2, 3, 5, 7}},
-                {1, 1, new int[]{1}},
+                {0, 10, new int[]{2, 3, 5, 7}},
+                {1, 1, new int[]{}},
                 {4, 4, new int[]{}},
                 {-5, -1, new int[]{}},
-                {-5, 5, new int[]{1, 2, 3, 5}},
+                {-5, 5, new int[]{2, 3, 5}},
                 {2, 4, new int[]{2, 3}}
         });
     }

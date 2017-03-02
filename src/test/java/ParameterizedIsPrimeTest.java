@@ -30,7 +30,7 @@ public class ParameterizedIsPrimeTest {
         return Arrays.asList(new Object[][] {
                 {-1, false},
                 {0, false},
-                {1, true},
+                {1, false},
                 {2, true},
                 {3, true},
                 {4, false},

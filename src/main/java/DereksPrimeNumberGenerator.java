@@ -19,10 +19,7 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
 
         List<Integer> generatedPrimes;
 
-        if (startingValue < 2 && endingValue >= 2) {
-            generatedPrimes = new ArrayList<>(Arrays.asList(1, 2));
-            startingValue = 3;
-        } else if (startingValue == 2) {
+        if (startingValue <= 2 && endingValue >= 2) {
             generatedPrimes = new ArrayList<>(Arrays.asList(2));
             startingValue = 3;
         } else {
@@ -46,7 +43,7 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
 
     @Override
     public boolean isPrime(int value) {
-        if (value < 1) {
+        if (value <= 1) {
             return false;
         } else if (value <= 3) {
             return true;
