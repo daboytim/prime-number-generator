@@ -38,7 +38,7 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
         int maxDivisor = (int)Math.sqrt(value);
 
         for (int i = 3; i <= maxDivisor; i += 2) {
-            if ( (double)value/i == value/i ) {
+            if (value % i == 0) {
                 return false;
             }
         }
