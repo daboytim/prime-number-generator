@@ -5,6 +5,14 @@ import java.util.List;
  * Created by derek on 3/1/17.
  */
 public class PrimeNumberGeneratorRunner {
+    private static final String INPUT_PROMPT = "Enter an integral range.\n";
+    private static final String START_PROMPT = "Start: ";
+    private static final String END_PROMPT = "End: ";
+    private static final String CONTINUE_PROMPT = "Continue generating primes?[Y/n] ";
+    private static final String DEFAULT_ANSWER = "Y";
+    private static final String NEW_LINE = "\n";
+    private static final String EMPTY_STRING = "";
+
     private PrimeNumberGenerator png;
     private int start, end;
     private BufferedReader reader;
@@ -28,16 +36,16 @@ public class PrimeNumberGeneratorRunner {
     }
 
     private void getValues() throws IOException {
-        out.write("Enter an integral range.\n".getBytes());
-        getValue("Start: ");
-        getValue("End: ");
+        out.write(INPUT_PROMPT.getBytes());
+        getValue(START_PROMPT);
+        getValue(END_PROMPT);
     }
 
     private void getValue(String which) throws IOException {
         out.write(which.getBytes());
         String ans = reader.readLine();
         int value = Integer.parseInt(ans);
-        if (which.equals("Start: ")) {
+        if (which.equals(START_PROMPT)) {
             start = value;
         } else {
             end = value;
@@ -47,13 +55,13 @@ public class PrimeNumberGeneratorRunner {
     private void execute() throws IOException {
         List<Integer> result = png.generate(start, end);
         out.write(result.toString().getBytes());
-        out.write("\n".getBytes());
+        out.write(NEW_LINE.getBytes());
     }
 
     private boolean ask() throws IOException {
-        out.write("Continue generating primes?[Y/n] ".getBytes());
+        out.write(CONTINUE_PROMPT.getBytes());
         String ans = reader.readLine();
-        if (ans.equals("") || ans.equalsIgnoreCase("y")) {
+        if (ans.equals(EMPTY_STRING) || ans.equalsIgnoreCase(DEFAULT_ANSWER)) {
             return true;
         }
         return false;
