@@ -34,7 +34,7 @@ public class ParameterizedGenerateTest {
                 {7900, 7920, new int[]{7901, 7907, 7919}},
                 {7920, 7900, new int[]{7901, 7907, 7919}},
                 {0, 10, new int[]{2, 3, 5, 7}},
-                {1, 1, new int[]{}},
+                {2, 2, new int[]{2}},
                 {4, 4, new int[]{}},
                 {-5, -1, new int[]{}},
                 {-5, 5, new int[]{2, 3, 5}},

@@ -22,7 +22,9 @@ public class PrimeNumberGeneratorRunner {
             execute();
         } while (ask());
         in.close();
-        out.close();
+        if (out != System.out) {
+            out.close();
+        }
     }
 
     private void getValues() throws IOException {

@@ -20,18 +20,23 @@ public class PrimeNumberGeneratorRunnerTest {
 
     @Test
     public void shouldAcceptTwoIntegersAsInput() throws Exception {
-        underTest.run(classLoader.getResourceAsStream("testInput"), System.out);
+        underTest.run(classLoader.getResourceAsStream("twoIntegerInput"), System.out);
     }
 
     @Test
     public void shouldPrintGeneratedPrimeNumbers() throws Exception {
         PipedInputStream outputReader = new PipedInputStream();
-        underTest.run(classLoader.getResourceAsStream("testInput"), new PipedOutputStream(outputReader));
+        underTest.run(classLoader.getResourceAsStream("twoIntegerInput"), new PipedOutputStream(outputReader));
         BufferedReader reader = new BufferedReader(new InputStreamReader(outputReader));
         StringBuffer result = new StringBuffer();
         while(reader.ready()) {
             result.append(reader.readLine());
         }
         assertThat(result.toString(), containsString("[7901, 7907, 7919]"));
+    }
+
+    @Test
+    public void shouldAllowMultipleExecutions() throws Exception {
+        underTest.run(classLoader.getResourceAsStream("multipleExecutionInput"), System.out);
     }
 }
