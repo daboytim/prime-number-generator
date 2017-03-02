@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -7,10 +8,28 @@ import java.util.List;
 public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
     @Override
     public List<Integer> generate(int startingValue, int endingValue) {
-        List<Integer> generatedPrimes = new ArrayList<>();
+        if (startingValue > endingValue) {
+            int tmp = startingValue;
+            startingValue = endingValue;
+            endingValue = startingValue;
+        }
+        if (endingValue <= 0) {
+            return Arrays.asList();
+        }
 
-        if (startingValue % 2 == 0) {
-            startingValue++;
+        List<Integer> generatedPrimes;
+
+        if (startingValue < 2 && endingValue >= 2) {
+            generatedPrimes = new ArrayList<>(Arrays.asList(1, 2));
+            startingValue = 3;
+        } else if (startingValue == 2) {
+            generatedPrimes = new ArrayList<>(Arrays.asList(2));
+            startingValue = 3;
+        } else {
+            generatedPrimes = new ArrayList<>();
+            if (startingValue % 2 == 0) {
+                startingValue++;
+            }
         }
         if (endingValue % 2 == 0) {
             endingValue--;
