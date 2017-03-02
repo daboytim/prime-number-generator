@@ -11,7 +11,7 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
         if (startingValue > endingValue) {
             int tmp = startingValue;
             startingValue = endingValue;
-            endingValue = startingValue;
+            endingValue = tmp;
         }
         if (endingValue <= 0) {
             return Arrays.asList();
