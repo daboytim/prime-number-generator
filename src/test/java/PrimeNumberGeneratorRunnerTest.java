@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import java.io.*;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -28,6 +29,10 @@ public class PrimeNumberGeneratorRunnerTest {
         PipedInputStream outputReader = new PipedInputStream();
         underTest.run(classLoader.getResourceAsStream("testInput"), new PipedOutputStream(outputReader));
         BufferedReader reader = new BufferedReader(new InputStreamReader(outputReader));
-        assertThat(reader.readLine(), equalTo("[7901, 7907, 7919]"));
+        StringBuffer result = new StringBuffer();
+        while(reader.ready()) {
+            result.append(reader.readLine());
+        }
+        assertThat(result.toString(), containsString("[7901, 7907, 7919]"));
     }
 }
