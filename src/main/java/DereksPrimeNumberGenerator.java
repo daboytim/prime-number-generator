@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -13,23 +13,13 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
             startingValue = endingValue;
             endingValue = tmp;
         }
-        if (endingValue <= 0) {
-            return Arrays.asList();
+        if (endingValue < 2) { //If the entire range is < the lowest prime number, return an empty list.
+            return Collections.emptyList();
         }
 
-        List<Integer> generatedPrimes;
+        List<Integer> generatedPrimes = new ArrayList<>();
 
-        if (startingValue <= 2 && endingValue >= 2) {
-            generatedPrimes = new ArrayList<>(Arrays.asList(2));
-            startingValue = 3;
-        } else {
-            generatedPrimes = new ArrayList<>();
-            if (startingValue % 2 == 0) {
-                startingValue++;
-            }
-        }
-
-        for (int i = startingValue; i <= endingValue; i += 2) {
+        for (int i = startingValue; i <= endingValue; i ++) {
             if (isPrime(i)) {
                 generatedPrimes.add(i);
             }
@@ -50,6 +40,8 @@ public class DereksPrimeNumberGenerator implements PrimeNumberGenerator {
 
         int maxDivisor = (int)Math.sqrt(value);
 
+        //We now know value is an odd number > 3 so we'll check for congruence with odd values between the lowest odd prime number (3) and sqrt(value).
+        //It would be an optimization to only check congruence with prime numbers; we'll implement that later.
         for (int i = 3; i <= maxDivisor; i += 2) {
             if (value % i == 0) {
                 return false;
