@@ -39,4 +39,16 @@ public class PrimeNumberGeneratorRunnerTest {
     public void shouldAllowMultipleExecutions() throws Exception {
         underTest.run(classLoader.getResourceAsStream("multipleExecutionInput"), System.out);
     }
+
+    @Test
+    public void shouldHandleNonIntegerInput() throws Exception {
+        PipedInputStream outputReader = new PipedInputStream();
+        underTest.run(classLoader.getResourceAsStream("nonIntegerInput"), new PipedOutputStream(outputReader));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(outputReader));
+        StringBuffer result = new StringBuffer();
+        while(reader.ready()) {
+            result.append(reader.readLine());
+        }
+        assertThat(result.toString(), containsString("is not a valid integer. Please try again."));
+    }
 }
