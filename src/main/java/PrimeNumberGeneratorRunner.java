@@ -8,6 +8,7 @@ public class PrimeNumberGeneratorRunner {
     private static final String INPUT_PROMPT = "Enter an integral range.\n";
     private static final String START_PROMPT = "Start: ";
     private static final String END_PROMPT = "End: ";
+    private static final String INVALID_INPUT_PROMPT = "%s is not a valid integer. Please try again.\n";
     private static final String CONTINUE_PROMPT = "Continue generating primes?[Y/n] ";
     private static final String DEFAULT_ANSWER = "Y";
     private static final String NEW_LINE = "\n";
@@ -42,9 +43,17 @@ public class PrimeNumberGeneratorRunner {
     }
 
     private void getValue(String which) throws IOException {
-        out.write(which.getBytes());
-        String ans = reader.readLine();
-        int value = Integer.parseInt(ans);
+        int value;
+        while (true) {
+            out.write(which.getBytes());
+            String ans = reader.readLine();
+            try {
+                value = Integer.parseInt(ans);
+                break;
+            } catch (NumberFormatException e) {
+                out.write(String.format(INVALID_INPUT_PROMPT, ans).getBytes());
+            }
+        }
         if (which.equals(START_PROMPT)) {
             start = value;
         } else {
