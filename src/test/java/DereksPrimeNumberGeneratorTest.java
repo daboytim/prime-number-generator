@@ -13,12 +13,19 @@ public class DereksPrimeNumberGeneratorTest {
     private static int startingValue = 7900;
     private static int endingValue = 7920;
     private static int[] validPrimes = {7901, 7907, 7919};
+    private static int[] firstTwentySixPrimes = {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
 
     private PrimeNumberGenerator underTest;
 
     @Before
     public void setup() {
         underTest = new DereksPrimeNumberGenerator();
+    }
+
+    @Test
+    public void shouldGenerateFirstTwentySixPrimes() throws Exception {
+        List<Integer> result = underTest.generate(2, 101);
+        assertThat(result.toArray(), equalTo(firstTwentySixPrimes));
     }
 
     @Test
